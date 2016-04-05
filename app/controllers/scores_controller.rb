@@ -1,10 +1,12 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
-
+  # USE THIS IF YOU WANT TO FORCE LOGIN: before_action :authenticate, only: [:show, :edit, :update, :destroy]
   # GET /scores
   # GET /scores.json
   def index
-    @scores = Score.all
+  # :points makes the parameter take it in as a symbol, (like an unchangeable string, this is what it wants)
+  # we changed this to .order(points: :desc) to force the scores to sort in highest to smallest mode, using the built-in order method
+    @scores = Score.order(points: :desc)
   end
 
   # GET /scores/1
@@ -54,12 +56,14 @@ class ScoresController < ApplicationController
   # DELETE /scores/1
   # DELETE /scores/1.json
   def destroy
+  if current_user.is_admin?
     @score.destroy
     respond_to do |format|
       format.html { redirect_to scores_url, notice: 'Score was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
