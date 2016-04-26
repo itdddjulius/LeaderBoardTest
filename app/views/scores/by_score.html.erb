@@ -1,0 +1,18 @@
+<h1>Top Scores "<%= @Score.name%>"</h1>
+
+<% if @scores.empty? %>
+  <p>No scores found.</p>
+<% else %>
+  <% @scores.each do |post| %>
+    <p>
+      <h3><%= score.title %> by <%= score.user.name %></h3>    
+      <p><%= score.body %></p>
+      <strong>Scores</strong>
+      <ul>
+        <% score.scores.each do |tag| %>
+          <li><%= score.name%></li>
+        <% end %>
+      </ul>
+    </p>
+  <% end %>
+<% end %>

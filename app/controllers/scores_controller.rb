@@ -75,4 +75,9 @@ end
     def score_params
       params.require(:score).permit(:name, :points)
     end
+    
+    # GET /tag/:id/posts - this comment helps you to remember which URL will map to this method
+    def by_score
+      @score = Score.find(params[:id]) # remember, find will raise an error if the record is not found
+    end
 end

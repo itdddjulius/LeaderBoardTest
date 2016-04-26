@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+ 
+ body {
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: Calibri, Arial, sans-serif;
+  color: #15ef09;
+}
+
+a, a:link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+a:hover {
+  color: #888;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  height: 20px;
+  padding:  10px;
+  font-size: 16px;
+  background-color: #057f19; 
+}
+
+.navbar .notifications {
+  width: 100%;
+  text-align: right;
+  font-weight: bold;
+  display: inline;
+}
+
+.navbar .notifications .notice {
+  color: #ffffff;
+}
+
+.navbar .notifications .alert {
+  color: #FF8256;
+}
+
+ul.login-links {
+  list-style: none;
+  width: 20%;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.title {
+  padding-top: 75px;
+  font-weight: bold;
+  font-size: 48px;
+  color: #15ef09;
+  width: 100%;
+  text-align: center;
+}
+
+
+.container {
+  width: 70%;
+  margin: 40px auto;
+}
+/*
+.menu {
+  width: 19%;
+  margin-right: 2%;
+  float: left;
+  text-align: right;
+}
+
+.menu ul.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.menu ul.nav-links li {
+  margin-bottom: 10px;
+}
+
+.menu ul.nav-links li:hover {
+  border-right: 10px #FF8256 solid;
+  padding-right: 5px;
+  transition: all 500ms ease;
+}
+
+*/
+
+.content {
+  width: 100%;
+  float: left;
+  background-color: #0f510c;
+  border-radius: 10px;
+  padding: 20px;
+}

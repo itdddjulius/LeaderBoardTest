@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>The Leaderboards</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
+  <div class="navbar">
+    <div class="notifications">
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
+    </div>
+    <ul class="login-links">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+        </li>
+      <% else %>
+        <li>
+          <%= link_to('Login', new_user_session_path)  %>  
+        </li>
+      <% end %>
+    </ul>
+    <div class="clear"></div>
+  </div>
 
-<%= yield %>
+
+  <div class="title">
+    Leaderboards
+  </div>
+  <div class="container">
+    <div class="menu">
+      <% unless @top_scores.empty? %>
+        <ul class="nav-links">
+          Top 5 Scores
+            <% @top_scores.each do |score| %>
+              <li><%= link_to "#{score.points} scored by #{score.name}", score_path(id: score.id)  %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <div class="clear"></div>
+  </div>
 
 </body>
 </html>

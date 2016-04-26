@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :games
+  resources :games #, only: [:index]
   devise_for :users
   ActiveAdmin.routes(self)
   resources :scores
   resources :posts
+  get '/scores/:id/scores', to: 'scores#by_score', as: 'posts_by_score'
   
   root 'scores#index'
   # The priority is based upon order of creation: first created -> highest priority.
