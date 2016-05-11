@@ -16,10 +16,10 @@
  
  body {
   background-color: #000000;
+  font-family: Slackey, Arial;
+  color: #15ef09;
   margin: 0;
   padding: 0;
-  font-family: Calibri, Arial, sans-serif;
-  color: #15ef09;
 }
 
 a, a:link {
@@ -35,17 +35,15 @@ a:hover {
 .navbar {
   width: 100%;
   position: fixed;
-  height: 20px;
-  padding:  10px;
   font-size: 16px;
   background-color: #057f19; 
 }
 
 .navbar .notifications {
-  width: 100%;
-  text-align: right;
+  float: left;
+  text-align: left;
   font-weight: bold;
-  display: inline;
+  margin: 10px;
 }
 
 .navbar .notifications .notice {
@@ -53,15 +51,14 @@ a:hover {
 }
 
 .navbar .notifications .alert {
-  color: #FF8256;
+  color: #ffffff;
 }
 
 ul.login-links {
   list-style: none;
-  width: 20%;
   float: right;
-  margin: 0;
-  padding: 0;
+  display: inline-block;
+  margin: 10px;
 }
 
 .clear {
@@ -113,6 +110,11 @@ ul.login-links {
   width: 100%;
   float: left;
   background-color: #0f510c;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 20 20 20 20px;
+  text-align: center;
+}
+
+.nav-links li {
+  list-style-type :none;
 }

@@ -1,15 +1,43 @@
 body {
   background-color: #fff;
-  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
+.navbar, a, p {
+  font-family: Slackey;
+  font-size: 15px;
+}
+
+ul.nav-links {
+  font-size: 18px;
+  text-align: center;
+  list-style-type : none;
+  background-color: #0f510c;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+   color: #15ef09;
+}
+
+table {
+  width: 100%;
+  float: center;
+}
+
+td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+th {
+  color:#fff;
+  font-size: 16px;
 }
 
 pre {
@@ -39,9 +67,7 @@ div {
 }
 
 #notice {
-  /*
-  color: green;
-  */
+  color: #ffffff;
 }
 
 .field_with_errors {
@@ -55,6 +81,8 @@ div {
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
+  width: 100%;
+  float: left;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 

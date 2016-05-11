@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+<link href='https://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
 <html>
 <head>
-  <title>The Leaderboards</title>
+  <title>Leaderboards</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -25,8 +26,7 @@
     </ul>
     <div class="clear"></div>
   </div>
-
-
+  <br>
   <div class="title">
     Leaderboards
   </div>
@@ -34,18 +34,23 @@
     <div class="menu">
       <% unless @top_scores.empty? %>
         <ul class="nav-links">
-          Top 5 Scores
+          Top 5 Scores in <%= @top_scores_game %>
+              <br />
+              <br />
             <% @top_scores.each do |score| %>
-              <li><%= link_to "#{score.points} scored by #{score.name}", score_path(id: score.id)  %></li>
+              <br />
+              <li><%= link_to "#{score.points} scored by #{score.name}", game_score_path(game_id: @top_scores_game.id, id: @score.id)  %></li>
           <% end %>
         </ul>
       <% end %>
     </div>
     <div class="content">
       <%= yield %>
+          <br>
     </div>
     <div class="clear"></div>
   </div>
+  
 
 </body>
 </html>

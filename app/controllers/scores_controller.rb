@@ -1,12 +1,13 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
+  before_action :set_game
   # USE THIS IF YOU WANT TO FORCE LOGIN: before_action :authenticate, only: [:show, :edit, :update, :destroy]
   # GET /scores
   # GET /scores.json
   def index
   # :points makes the parameter take it in as a symbol, (like an unchangeable string, this is what it wants)
   # we changed this to .order(points: :desc) to force the scores to sort in highest to smallest mode, using the built-in order method
-    @scores = Score.order(points: :desc)
+    @scores = @game.scores.order(points: :desc)
   end
 
   # GET /scores/1
@@ -16,7 +17,7 @@ class ScoresController < ApplicationController
 
   # GET /scores/new
   def new
-    @score = Score.new
+    @score = @game.scores.new
   end
 
   # GET /scores/1/edit
@@ -26,11 +27,11 @@ class ScoresController < ApplicationController
   # POST /scores
   # POST /scores.json
   def create
-    @score = Score.new(score_params)
+    @score = @game.scores.new(score_params)
 
     respond_to do |format|
       if @score.save
-        format.html { redirect_to @score, notice: 'Score was successfully created.' }
+        format.html { redirect_to @game, notice: 'Score was successfully created.' }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class ScoresController < ApplicationController
   def update
     respond_to do |format|
       if @score.update(score_params)
-        format.html { redirect_to @score, notice: 'Score was successfully updated.' }
+        format.html { redirect_to @game, notice: 'Score was successfully updated.' }
         format.json { render :show, status: :ok, location: @score }
       else
         format.html { render :edit }
@@ -76,8 +77,12 @@ end
       params.require(:score).permit(:name, :points)
     end
     
-    # GET /tag/:id/posts - this comment helps you to remember which URL will map to this method
+    # GET /tag/:id/scores - this comment helps you to remember which URL will map to this method
     def by_score
       @score = Score.find(params[:id]) # remember, find will raise an error if the record is not found
+    end
+    
+    def set_game
+      @game = Game.find(params[:game_id])
     end
 end

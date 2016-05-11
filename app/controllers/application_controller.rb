@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :initialize_top_scores
 
     def initialize_top_scores
-      @top_scores = Score.order(points: :desc).limit(5) #for temporary whole score list
+      @top_scores_game = Game.find(1) #This is where you can place the id to show the top 5 scores for your favorite game
+      @top_scores = @top_scores_game.scores.order(points: :desc).limit(5) #for temporary whole score list
     end
 
     def admin_required
