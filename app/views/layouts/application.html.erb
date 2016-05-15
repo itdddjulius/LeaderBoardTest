@@ -34,12 +34,13 @@
     <div class="menu">
       <% unless @top_scores.empty? %>
         <ul class="nav-links">
-          Top 5 Scores in <%= @top_scores_game %>
-              <br />
+          <div id="top5">
+          Top 5 Scores in <%= @top_scores_game.title %>
+          </div>
               <br />
             <% @top_scores.each do |score| %>
               <br />
-              <li><%= link_to "#{score.points} scored by #{score.name}", game_score_path(game_id: @top_scores_game.id, id: @score.id)  %></li>
+              <li><%= link_to "#{score.points} scored by #{score.name}", game_score_path(game_id: @top_scores_game.id, id: score.id)  %></li>
           <% end %>
         </ul>
       <% end %>

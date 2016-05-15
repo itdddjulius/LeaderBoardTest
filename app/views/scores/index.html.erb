@@ -14,14 +14,15 @@
   </thead>
 
   <tbody>
+    <br>
     <% @scores.each do |score| %>
       <tr>
         <td><%= score.name %></td>
         <td><%= score.points %></td>
         <td><%= score.created_at.strftime("%m/%d/%Y") %></td>
-        <td><%= link_to 'Show', score %></td>
-          <% if current_user && current_user.is_admin? %>
-          <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', game_score_path(game_id: @game.id, id: score.id) %></td>
+            <% if current_user && current_user.is_admin? %>
+            <td><%= link_to 'Destroy', game_score_path(game_id: @game.id, id: score.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
       </tr>
     <% end %>
@@ -29,6 +30,7 @@
 </table>
 
 <br />
-<%= link_to 'New Score', new_score_path %>
+<%= link_to 'New Score', new_game_score_path %> |
+<%= link_to 'Back to Games', games_path %>
 <br />
 <br />

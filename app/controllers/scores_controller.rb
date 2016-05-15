@@ -60,16 +60,16 @@ class ScoresController < ApplicationController
   if current_user.is_admin?
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to scores_url, notice: 'Score was successfully destroyed.' }
+      format.html { redirect_to game_scores_url(@game), notice: 'Score was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_score
-      @score = Score.find(params[:id])
+      @score =  Score.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

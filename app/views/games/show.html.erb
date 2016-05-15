@@ -15,9 +15,9 @@
 
   <tbody>
     <% unless @game.scores.empty? %>
+          <br>
       <% @game.scores.each do |score| %>
         <tr>
-          <!--<td>score.gameID %></td> -->
           <td><%= score.name %></td>
           <td><%= score.points %></td>
           <td><%= score.created_at.strftime("%m/%d/%Y") %></td>
@@ -32,6 +32,7 @@
 </table>
 
 <br />
-<%= link_to 'New Score', new_game_score_path(game_id: @game.id) %>
+<%= link_to 'New Score', new_game_score_path(game_id: @game.id) %> |
+<%= link_to 'Back to Games', games_path %>
 <br />
 <br />

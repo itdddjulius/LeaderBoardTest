@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   def index
   # :games makes the parameter take it in as a symbol, (like an unchangeable string, this is what it wants)
   # we changed this to .order(points: :desc) to force the games to sort in highest to smallest mode, using the built-in order method
-    @games = Game.order(title: :desc)
+    @games = Game.order(:title, title: :desc)
   end
 
   # GET /games/1
@@ -30,7 +30,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to games_url, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        format.html { redirect_to games_url, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }

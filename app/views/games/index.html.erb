@@ -14,9 +14,12 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.title %></td>
-        <td><%= link_to 'Show Score Table', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show Score Table', game_scores_path(game) %></td>
+        
+        <% if current_user && current_user.is_admin? %>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
