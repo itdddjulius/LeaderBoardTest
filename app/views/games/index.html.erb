@@ -26,6 +26,9 @@
 </table>
 
 <br />
+
+<% if current_user && current_user.is_admin? %>
+<br />
 <%= link_to 'New Game', new_game_path %>
 <br />
-<br />
+<% end %>

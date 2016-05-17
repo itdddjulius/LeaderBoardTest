@@ -32,7 +32,9 @@
 </table>
 
 <br />
+<% if current_user %>
 <%= link_to 'New Score', new_game_score_path(game_id: @game.id) %> |
+<% end %>
 <%= link_to 'Back to Games', games_path %>
 <br />
 <br />
